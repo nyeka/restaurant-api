@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widget/favorite.dart';
 import 'package:get/get.dart';
 import '../data/restaurant.dart';
 
@@ -48,7 +49,7 @@ class Detailhome extends StatelessWidget {
                                         color: Colors.white,
                                       ),
                                       onPressed: () {
-                                        Navigator.pop(context);
+                                        Get.back();
                                       },
                                     ),
                                   ),
@@ -122,14 +123,18 @@ class Detailhome extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               child: Row(
                                 children: restaurants.menus.foods
-                                    .map((data) => Container(
+                                    .map(
+                                      (data) => Container(
                                         margin: const EdgeInsets.symmetric(
                                             vertical: 25, horizontal: 5),
                                         child: Card(
-                                            child: Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: Text(data.name),
-                                        ))))
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10),
+                                            child: Text(data.name),
+                                          ),
+                                        ),
+                                      ),
+                                    )
                                     .toList(),
                               ),
                             ),
@@ -171,32 +176,6 @@ class Detailhome extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class FavoriteButton extends StatefulWidget {
-  const FavoriteButton({Key? key}) : super(key: key);
-
-  @override
-  _FavoriteButtonState createState() => _FavoriteButtonState();
-}
-
-class _FavoriteButtonState extends State<FavoriteButton> {
-  bool isFavorite = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(
-        isFavorite ? Icons.favorite : Icons.favorite_border,
-        color: Colors.red,
-      ),
-      onPressed: () {
-        setState(() {
-          isFavorite = !isFavorite;
-        });
-      },
     );
   }
 }

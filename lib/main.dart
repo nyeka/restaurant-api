@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurantapi/widget/listdata.dart';
 import 'detail/page.dart';
 
 void main() {
@@ -12,8 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Myhomepage.routeName, routes: {
-      Myhomepage.routeName: (context) => const Myhomepage(),
-    });
+      home: Alldata()
+    );
   }
 }

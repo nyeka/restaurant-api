@@ -1,17 +1,18 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:restaurantapi/data/restaurant.dart';
 
-class ApiServive extends StatelessWidget {
-  static const String _baseUrl = 'https://newsapi.org/v2/';
-  static const String _apiKey = 'YOUR_API_KEY';
-  static const String _category = 'business';
-  static const String _country = 'id';
+class ApiService extends StatelessWidget {
+  static const String _list = '/list';
+  // static const String _detail = '/detail';
+  static const String _baseUrl = 'https://restaurant-api.dicoding.dev';
+
+  const ApiService({Key? key}) : super(key: key);
+
 
   Future<Restaurant> getdata() async {
-    var data = await http.get(Uri.parse(_baseUrl));
+    var data = await http.get(Uri.parse(_baseUrl + _list));
 
     if (data.statusCode == 200) {
       return Restaurant.fromJson(jsonDecode(data.body));
